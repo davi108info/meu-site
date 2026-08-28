@@ -1,187 +1,96 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
 
     <meta charset="UTF-8">
 
-    <title>GameZone - Recomendação de Jogos</title>
+    <title>GameZone</title>
 
     <style>
 
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
             background-color: #101010;
             color: white;
+            font-family: Arial;
+            margin: 0;
         }
 
         header {
-            background-color: #181818;
+            background-color: #252525;
             text-align: center;
-            padding: 30px;
-            border-bottom: 3px solid #7c3cff;
+            padding: 25px;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 40px;
-            color: #9b6cff;
-        }
-
-        header p {
-            color: #cccccc;
-            font-size: 17px;
+        h1 {
+            color: #8a5cff;
         }
 
         nav {
-            background-color: #0b0b0b;
+            background-color: #151515;
             text-align: center;
-            padding: 18px;
+            padding: 15px;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin: 20px;
-            font-weight: bold;
+            margin: 15px;
         }
 
         nav a:hover {
-            color: #9b6cff;
+            color: #8a5cff;
         }
 
-        .principal {
+        .conteudo {
             width: 90%;
             margin: auto;
         }
 
         .inicio {
             text-align: center;
-            background-color: #1b142b;
-            padding: 50px 20px;
-            margin-top: 30px;
-            border-radius: 15px;
+            padding: 40px;
         }
 
         .inicio h2 {
-            font-size: 32px;
-            color: #b18cff;
-        }
-
-        .inicio p {
-            color: #cccccc;
-            font-size: 18px;
-        }
-
-        section {
-            margin-top: 45px;
-        }
-
-        section h2 {
-            color: #a77aff;
-            border-left: 5px solid #7c3cff;
-            padding-left: 10px;
+            color: #9c7aff;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            background-color: #181818;
         }
 
         th {
-            background-color: #6d32d9;
-            padding: 15px;
-            text-align: left;
+            background-color: #6b3bc7;
+            padding: 12px;
         }
 
         td {
-            padding: 15px;
-            border-bottom: 1px solid #333333;
-        }
-
-        tr:hover {
-            background-color: #242424;
-        }
-
-        .jogo {
-            font-size: 19px;
-            font-weight: bold;
-            color: #ffffff;
+            background-color: #202020;
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #444;
         }
 
         .nota {
-            color: #ffd84d;
-            font-weight: bold;
+            color: yellow;
         }
 
-        .categoria {
-            background-color: #6d32d9;
-            padding: 6px 10px;
-            border-radius: 10px;
-        }
-
-        .imagem {
-            width: 140px;
-            height: 90px;
-            background-color: #292929;
-            border: 2px dashed #666666;
-            text-align: center;
-            vertical-align: middle;
-            color: #999999;
-        }
-
-        .destaque {
-            background-color: #181818;
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid #333333;
-        }
-
-        .destaque h3 {
-            color: #a77aff;
-        }
-
-        .destaque p {
-            color: #cccccc;
-            line-height: 1.6;
+        .caixa {
+            background-color: #202020;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #444;
         }
 
         footer {
-            margin-top: 50px;
-            background-color: #080808;
+            background-color: #151515;
             text-align: center;
-            padding: 30px;
-            color: #888888;
-        }
-
-        @media (max-width: 700px) {
-
-            header h1 {
-                font-size: 30px;
-            }
-
-            nav a {
-                display: block;
-                margin: 12px;
-            }
-
-            table {
-                font-size: 13px;
-            }
-
-            th,
-            td {
-                padding: 8px;
-            }
-
-            .imagem {
-                width: 80px;
-                height: 60px;
-            }
-
+            padding: 25px;
+            margin-top: 40px;
+            color: #999;
         }
 
     </style>
@@ -194,9 +103,9 @@
 
 <header>
 
-    <h1>GAMEZONE</h1>
+    <h1>🎮 GameZone</h1>
 
-    <p>Seu guia para encontrar jogos incríveis</p>
+    <p>Site de recomendação de jogos</p>
 
 </header>
 
@@ -207,292 +116,120 @@
 
     <a href="#jogos">Jogos</a>
 
-    <a href="#comparacao">Comparação</a>
-
     <a href="#categorias">Categorias</a>
 
 </nav>
 
 
-<div class="principal">
+<div class="conteudo">
 
 
-    <section class="inicio" id="inicio">
+    <div class="inicio" id="inicio">
 
-        <h2>Encontre seu próximo jogo!</h2>
+        <h2>Bem-vindo ao GameZone!</h2>
 
         <p>
-            Escolha um gênero, compare os jogos
-            e descubra qual combina mais com você.
+            Aqui você pode conhecer alguns jogos
+            e escolher qual jogar.
         </p>
 
-    </section>
+    </div>
 
 
+    <h2 id="jogos">🎮 Jogos recomendados</h2>
 
-    <section id="jogos">
 
-        <h2>🎮 Jogos recomendados</h2>
+    <table>
 
+        <tr>
 
-        <table>
+            <th>Jogo</th>
+            <th>Gênero</th>
+            <th>Plataforma</th>
+            <th>Nota</th>
 
-            <tr>
+        </tr>
 
-                <th>Imagem</th>
 
-                <th>Jogo</th>
+        <tr>
 
-                <th>Gênero</th>
+            <td>Minecraft</td>
+            <td>Aventura</td>
+            <td>PC / Celular</td>
+            <td class="nota">9,5</td>
 
-                <th>Plataforma</th>
+        </tr>
 
-                <th>Nota</th>
 
-            </tr>
+        <tr>
 
+            <td>Free Fire</td>
+            <td>Battle Royale</td>
+            <td>Celular</td>
+            <td class="nota">8,8</td>
 
-            <tr>
+        </tr>
 
-                <td class="imagem">
-                    Sua imagem
-                </td>
 
-                <td class="jogo">
-                    Minecraft
-                </td>
+        <tr>
 
-                <td>
-                    <span class="categoria">
-                        Aventura
-                    </span>
-                </td>
+            <td>Fortnite</td>
+            <td>Battle Royale</td>
+            <td>PC / Console</td>
+            <td class="nota">9,0</td>
 
-                <td>
-                    PC / Console / Celular
-                </td>
+        </tr>
 
-                <td class="nota">
-                    9,5
-                </td>
 
-            </tr>
+        <tr>
 
+            <td>Resident Evil 4</td>
+            <td>Terror / Ação</td>
+            <td>PC / Console</td>
+            <td class="nota">9,6</td>
 
-            <tr>
+        </tr>
 
-                <td class="imagem">
-                    Sua imagem
-                </td>
+    </table>
 
-                <td class="jogo">
-                    Free Fire
-                </td>
 
-                <td>
-                    <span class="categoria">
-                        Battle Royale
-                    </span>
-                </td>
+    <h2 id="categorias">🎯 Categorias</h2>
 
-                <td>
-                    Celular
-                </td>
 
-                <td class="nota">
-                    8,8
-                </td>
+    <div class="caixa">
 
-            </tr>
+        <h3>🔥 Ação</h3>
 
+        <p>
+            Jogos para quem gosta de lutas,
+            desafios e aventura.
+        </p>
 
-            <tr>
+    </div>
 
-                <td class="imagem">
-                    Sua imagem
-                </td>
 
-                <td class="jogo">
-                    Resident Evil 4
-                </td>
+    <div class="caixa">
 
-                <td>
-                    <span class="categoria">
-                        Ação / Terror
-                    </span>
-                </td>
+        <h3>👻 Terror</h3>
 
-                <td>
-                    PC / Console
-                </td>
+        <p>
+            Jogos com suspense, mistério
+            e momentos assustadores.
+        </p>
 
-                <td class="nota">
-                    9,6
-                </td>
+    </div>
 
-            </tr>
 
+    <div class="caixa">
 
-            <tr>
+        <h3>🏆 Competitivo</h3>
 
-                <td class="imagem">
-                    Sua imagem
-                </td>
+        <p>
+            Jogos para quem gosta de competir
+            e jogar contra outras pessoas.
+        </p>
 
-                <td class="jogo">
-                    Fortnite
-                </td>
-
-                <td>
-                    <span class="categoria">
-                        Battle Royale
-                    </span>
-                </td>
-
-                <td>
-                    PC / Console / Celular
-                </td>
-
-                <td class="nota">
-                    9,0
-                </td>
-
-            </tr>
-
-        </table>
-
-    </section>
-
-
-
-    <section id="comparacao">
-
-        <h2>📊 Comparação</h2>
-
-
-        <table>
-
-            <tr>
-
-                <th>Jogo</th>
-
-                <th>Dificuldade</th>
-
-                <th>Multijogador</th>
-
-                <th>Mundo aberto</th>
-
-                <th>Nota</th>
-
-            </tr>
-
-
-            <tr>
-
-                <td>Minecraft</td>
-
-                <td>Fácil</td>
-
-                <td>Sim</td>
-
-                <td>Sim</td>
-
-                <td class="nota">9,5</td>
-
-            </tr>
-
-
-            <tr>
-
-                <td>Free Fire</td>
-
-                <td>Média</td>
-
-                <td>Sim</td>
-
-                <td>Não</td>
-
-                <td class="nota">8,8</td>
-
-            </tr>
-
-
-            <tr>
-
-                <td>Resident Evil 4</td>
-
-                <td>Difícil</td>
-
-                <td>Não</td>
-
-                <td>Não</td>
-
-                <td class="nota">9,6</td>
-
-            </tr>
-
-
-            <tr>
-
-                <td>Fortnite</td>
-
-                <td>Média</td>
-
-                <td>Sim</td>
-
-                <td>Não</td>
-
-                <td class="nota">9,0</td>
-
-            </tr>
-
-        </table>
-
-    </section>
-
-
-
-    <section id="categorias">
-
-        <h2>🎯 Escolha pelo seu estilo</h2>
-
-
-        <div class="destaque">
-
-            <h3>🔥 Ação</h3>
-
-            <p>
-                Para quem gosta de combates,
-                desafios e muita adrenalina.
-            </p>
-
-
-            <h3>👻 Terror</h3>
-
-            <p>
-                Para quem gosta de suspense,
-                mistério e momentos assustadores.
-            </p>
-
-
-            <h3>🌎 Mundo aberto</h3>
-
-            <p>
-                Para quem prefere explorar mapas,
-                descobrir lugares e jogar livremente.
-            </p>
-
-
-            <h3>🏆 Competitivo</h3>
-
-            <p>
-                Para quem gosta de disputar partidas
-                contra outros jogadores.
-            </p>
-
-        </div>
-
-    </section>
+    </div>
 
 
 </div>
@@ -500,9 +237,9 @@
 
 <footer>
 
-    <p>GAMEZONE © 2026</p>
+    <p>GameZone - 2026</p>
 
-    <p>Site criado utilizando apenas HTML e CSS.</p>
+    <p>Projeto de HTML e CSS</p>
 
 </footer>
 
