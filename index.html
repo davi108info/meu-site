@@ -1,716 +1,425 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>GameFinder — Recomendações de Jogos</title>
+    <title>GameZone - Recomendação de Jogos</title>
 
     <style>
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
         }
 
         body {
-            background: #0b0d13;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #10131a;
             color: white;
         }
-
-        /* ===== HEADER ===== */
 
         header {
-            height: 75px;
-            background: #11141d;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 7%;
-            border-bottom: 1px solid #252936;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            background-color: #171b25;
+            padding: 25px;
+            text-align: center;
+            border-bottom: 3px solid #6c35ff;
         }
 
-        .logo {
-            font-size: 25px;
-            font-weight: bold;
-            color: #7c5cff;
+        header h1 {
+            font-size: 38px;
+            color: #8b5cff;
         }
 
-        .logo span {
-            color: white;
+        header p {
+            margin-top: 8px;
+            color: #b8b8b8;
         }
 
         nav {
-            display: flex;
-            gap: 30px;
+            background-color: #0b0e14;
+            text-align: center;
+            padding: 15px;
         }
 
         nav a {
-            color: #c9c9d1;
+            color: white;
             text-decoration: none;
-            transition: 0.3s;
+            margin: 0 15px;
+            font-weight: bold;
         }
 
         nav a:hover {
-            color: #7c5cff;
+            color: #8b5cff;
         }
 
-        .login {
-            background: #7c5cff;
-            padding: 10px 18px;
-            border-radius: 8px;
-            color: white;
-            text-decoration: none;
+        .banner {
+            margin: 30px auto;
+            width: 90%;
+            max-width: 1100px;
+            background: linear-gradient(135deg, #25145c, #12151d);
+            padding: 50px 25px;
+            text-align: center;
+            border-radius: 15px;
         }
 
-        /* ===== HERO ===== */
-
-        .hero {
-            min-height: 520px;
-            padding: 90px 7%;
-            display: flex;
-            align-items: center;
-
-            background:
-                linear-gradient(90deg, #0b0d13 20%, rgba(11,13,19,0.75), rgba(11,13,19,0.1)),
-                url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=80");
-
-            background-size: cover;
-            background-position: center;
-        }
-
-        .hero-content {
-            max-width: 600px;
-        }
-
-        .hero h1 {
-            font-size: 55px;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: #7c5cff;
-        }
-
-        .hero p {
-            color: #c7c7ce;
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        .button {
-            display: inline-block;
-            background: #7c5cff;
-            padding: 14px 25px;
-            border-radius: 9px;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .button:hover {
-            transform: translateY(-3px);
-            background: #6848f5;
-        }
-
-        /* ===== SEARCH ===== */
-
-        .search-area {
-            padding: 45px 7%;
-            background: #10131b;
-        }
-
-        .search-box {
-            max-width: 850px;
-            margin: auto;
-            display: flex;
-            background: #191d28;
-            border: 1px solid #2b3040;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .search-box input {
-            flex: 1;
-            padding: 18px;
-            background: transparent;
-            border: none;
-            outline: none;
-            color: white;
-            font-size: 16px;
-        }
-
-        .search-box button {
-            width: 120px;
-            border: none;
-            background: #7c5cff;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        /* ===== CONTENT ===== */
-
-        .container {
-            width: 86%;
-            max-width: 1250px;
-            margin: 60px auto;
-        }
-
-        .section-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-
-        .section-title h2 {
-            font-size: 28px;
-        }
-
-        .section-title a {
-            color: #7c5cff;
-            text-decoration: none;
-        }
-
-        /* ===== FILTERS ===== */
-
-        .filters {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-
-        .filter {
-            padding: 10px 18px;
-            border: 1px solid #303544;
-            background: #151923;
-            color: #ccc;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .filter:hover,
-        .filter.active {
-            background: #7c5cff;
-            color: white;
-            border-color: #7c5cff;
-        }
-
-        /* ===== GAMES ===== */
-
-        .games {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 22px;
-        }
-
-        .game-card {
-            background: #151923;
-            border-radius: 14px;
-            overflow: hidden;
-            border: 1px solid #252a38;
-            transition: 0.3s;
-            position: relative;
-        }
-
-        .game-card:hover {
-            transform: translateY(-7px);
-            border-color: #7c5cff;
-        }
-
-        .game-image {
-            height: 210px;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .favorite {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(0,0,0,0.7);
-            border: none;
-            color: white;
-            font-size: 20px;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        .favorite:hover {
-            color: #ff4f81;
-        }
-
-        .game-info {
-            padding: 18px;
-        }
-
-        .game-info h3 {
-            margin-bottom: 8px;
-        }
-
-        .genre {
-            color: #999eae;
-            font-size: 14px;
-            margin-bottom: 12px;
-        }
-
-        .rating {
-            color: #ffc107;
+        .banner h2 {
+            font-size: 32px;
             margin-bottom: 15px;
         }
 
-        .game-button {
-            display: block;
-            text-align: center;
-            padding: 10px;
-            border-radius: 7px;
-            background: #222735;
-            color: white;
-            text-decoration: none;
+        .banner p {
+            color: #cccccc;
+            font-size: 17px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        section {
+            margin: 40px 0;
+        }
+
+        section h2 {
+            margin-bottom: 20px;
+            color: #9b73ff;
+            border-left: 5px solid #6c35ff;
+            padding-left: 10px;
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: #191e29;
+            border-radius: 12px;
+            overflow: hidden;
+            flex: 1;
+            min-width: 250px;
+            border: 1px solid #292f3d;
             transition: 0.3s;
         }
 
-        .game-button:hover {
-            background: #7c5cff;
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #8b5cff;
         }
 
-        /* ===== RECOMMENDATION ===== */
-
-        .recommendation {
-            margin-top: 80px;
-            padding: 45px;
-            border-radius: 18px;
-            background: linear-gradient(135deg, #171b2a, #211b3c);
-            border: 1px solid #34304c;
+        .card img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
         }
 
-        .recommendation h2 {
-            font-size: 30px;
-            margin-bottom: 12px;
+        .card-content {
+            padding: 18px;
         }
 
-        .recommendation p {
-            color: #bdbdc8;
-            margin-bottom: 25px;
+        .card h3 {
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .card p {
+            color: #bdbdbd;
             line-height: 1.5;
         }
 
-        /* ===== FOOTER ===== */
+        .categoria {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 6px 10px;
+            background-color: #6c35ff;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #191e29;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background-color: #6c35ff;
+            padding: 15px;
+            text-align: left;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #303642;
+            color: #d5d5d5;
+        }
+
+        tr:hover {
+            background-color: #222836;
+        }
+
+        .nota {
+            color: #ffd43b;
+            font-weight: bold;
+        }
+
+        .destaque {
+            background-color: #191e29;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #6c35ff;
+        }
+
+        .destaque h3 {
+            color: #a982ff;
+            margin-bottom: 10px;
+        }
+
+        .destaque p {
+            color: #cccccc;
+            line-height: 1.6;
+        }
 
         footer {
-            background: #080a0f;
-            padding: 40px 7%;
-            margin-top: 80px;
-            border-top: 1px solid #252936;
+            margin-top: 50px;
+            background-color: #0b0e14;
+            padding: 30px;
             text-align: center;
-            color: #777b89;
+            color: #888;
         }
 
-        /* ===== RESPONSIVE ===== */
+        @media (max-width: 700px) {
 
-        @media (max-width: 1000px) {
-            .games {
-                grid-template-columns: repeat(2, 1fr);
+            header h1 {
+                font-size: 30px;
             }
 
-            nav {
-                display: none;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .hero {
-                min-height: 500px;
-                padding: 60px 7%;
+            nav a {
+                display: block;
+                margin: 10px;
             }
 
-            .hero h1 {
-                font-size: 38px;
+            .banner h2 {
+                font-size: 25px;
             }
 
-            .games {
-                grid-template-columns: 1fr;
+            .cards {
+                flex-direction: column;
             }
 
-            .search-box button {
-                width: 90px;
+            table {
+                font-size: 13px;
+            }
+
+            th, td {
+                padding: 10px;
             }
         }
+
     </style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
-
     <header>
-
-        <div class="logo">
-            Game<span>Finder</span>
-        </div>
-
-        <nav>
-            <a href="#">Início</a>
-            <a href="#jogos">Jogos</a>
-            <a href="#generos">Gêneros</a>
-            <a href="#recomendacao">Recomendação</a>
-        </nav>
-
-        <a href="#" class="login">Entrar</a>
-
+        <h1>🎮 GAMEZONE</h1>
+        <p>Descubra seu próximo jogo favorito</p>
     </header>
 
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#recomendados">Recomendados</a>
+        <a href="#comparacao">Comparação</a>
+        <a href="#categorias">Categorias</a>
+    </nav>
 
-    <!-- HERO -->
+    <main>
 
-    <section class="hero">
+        <div class="banner" id="inicio">
 
-        <div class="hero-content">
-
-            <h1>
-                Encontre seu próximo
-                <span>jogo favorito.</span>
-            </h1>
+            <h2>Encontre o jogo perfeito para você!</h2>
 
             <p>
-                Descubra jogos incríveis de acordo com seus gostos.
-                Explore gêneros, avaliações e recomendações personalizadas.
+                Descubra jogos incríveis de ação, aventura,
+                sobrevivência, corrida e muito mais.
             </p>
 
-            <a href="#jogos" class="button">
-                Explorar jogos
-            </a>
-
         </div>
 
-    </section>
+        <div class="container">
 
+            <section id="recomendados">
 
-    <!-- SEARCH -->
+                <h2>🔥 Jogos recomendados</h2>
 
-    <section class="search-area">
+                <div class="cards">
 
-        <div class="search-box">
+                    <div class="card">
 
-            <input
-                type="text"
-                id="search"
-                placeholder="Pesquise por um jogo..."
-            >
+                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e" alt="Jogo de ação">
 
-            <button onclick="searchGame()">
-                🔎 Buscar
-            </button>
+                        <div class="card-content">
 
-        </div>
+                            <h3>Resident Evil 4</h3>
 
-    </section>
+                            <p>
+                                Uma aventura cheia de ação,
+                                exploração e suspense.
+                            </p>
 
+                            <span class="categoria">Terror / Ação</span>
 
-    <!-- JOGOS -->
+                        </div>
 
-    <main class="container" id="jogos">
-
-        <div class="section-title">
-
-            <h2>🔥 Jogos em destaque</h2>
-
-            <a href="#">
-                Ver todos →
-            </a>
-
-        </div>
-
-
-        <!-- FILTROS -->
-
-        <div class="filters" id="generos">
-
-            <button class="filter active">
-                Todos
-            </button>
-
-            <button class="filter">
-                Ação
-            </button>
-
-            <button class="filter">
-                RPG
-            </button>
-
-            <button class="filter">
-                Aventura
-            </button>
-
-            <button class="filter">
-                Terror
-            </button>
-
-            <button class="filter">
-                Esportes
-            </button>
-
-        </div>
-
-
-        <!-- CARDS -->
-
-        <div class="games">
-
-
-            <!-- GAME 1 -->
-
-            <article class="game-card">
-
-                <button class="favorite">
-                    ♡
-                </button>
-
-                <img
-                    class="game-image"
-                    src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80"
-                    alt="Jogo de ação"
-                >
-
-                <div class="game-info">
-
-                    <h3>Cyber Legends</h3>
-
-                    <div class="genre">
-                        Ação • RPG
                     </div>
 
-                    <div class="rating">
-                        ★★★★★
+
+                    <div class="card">
+
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f" alt="Videogame">
+
+                        <div class="card-content">
+
+                            <h3>Free Fire</h3>
+
+                            <p>
+                                Battle Royale rápido e competitivo
+                                para jogar com seus amigos.
+                            </p>
+
+                            <span class="categoria">Battle Royale</span>
+
+                        </div>
+
                     </div>
 
-                    <a href="#" class="game-button">
-                        Ver jogo
-                    </a>
+
+                    <div class="card">
+
+                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420" alt="Computador gamer">
+
+                        <div class="card-content">
+
+                            <h3>Minecraft</h3>
+
+                            <p>
+                                Explore, construa e sobreviva
+                                em um mundo totalmente aberto.
+                            </p>
+
+                            <span class="categoria">Aventura</span>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
-            </article>
+            </section>
 
 
-            <!-- GAME 2 -->
+            <section id="comparacao">
 
-            <article class="game-card">
+                <h2>📊 Compare os jogos</h2>
 
-                <button class="favorite">
-                    ♡
-                </button>
+                <table>
 
-                <img
-                    class="game-image"
-                    src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=800&q=80"
-                    alt="Jogo de corrida"
-                >
+                    <tr>
+                        <th>Jogo</th>
+                        <th>Gênero</th>
+                        <th>Modo</th>
+                        <th>Nota</th>
+                    </tr>
 
-                <div class="game-info">
+                    <tr>
+                        <td>Resident Evil 4</td>
+                        <td>Ação / Terror</td>
+                        <td>Single-player</td>
+                        <td class="nota">9.5/10</td>
+                    </tr>
 
-                    <h3>Velocity X</h3>
+                    <tr>
+                        <td>Free Fire</td>
+                        <td>Battle Royale</td>
+                        <td>Online</td>
+                        <td class="nota">8.5/10</td>
+                    </tr>
 
-                    <div class="genre">
-                        Corrida • Esportes
-                    </div>
+                    <tr>
+                        <td>Minecraft</td>
+                        <td>Aventura</td>
+                        <td>Solo / Online</td>
+                        <td class="nota">9.7/10</td>
+                    </tr>
 
-                    <div class="rating">
-                        ★★★★☆
-                    </div>
+                    <tr>
+                        <td>Fortnite</td>
+                        <td>Battle Royale</td>
+                        <td>Online</td>
+                        <td class="nota">9.0/10</td>
+                    </tr>
 
-                    <a href="#" class="game-button">
-                        Ver jogo
-                    </a>
+                </table>
 
-                </div>
-
-            </article>
-
-
-            <!-- GAME 3 -->
-
-            <article class="game-card">
-
-                <button class="favorite">
-                    ♡
-                </button>
-
-                <img
-                    class="game-image"
-                    src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&w=800&q=80"
-                    alt="Jogo de aventura"
-                >
-
-                <div class="game-info">
-
-                    <h3>Lost Kingdom</h3>
-
-                    <div class="genre">
-                        Aventura • RPG
-                    </div>
-
-                    <div class="rating">
-                        ★★★★★
-                    </div>
-
-                    <a href="#" class="game-button">
-                        Ver jogo
-                    </a>
-
-                </div>
-
-            </article>
+            </section>
 
 
-            <!-- GAME 4 -->
+            <section id="categorias">
 
-            <article class="game-card">
+                <h2>🎯 Escolha pelo seu estilo</h2>
 
-                <button class="favorite">
-                    ♡
-                </button>
+                <div class="destaque">
 
-                <img
-                    class="game-image"
-                    src="https://images.unsplash.com/photo-1507457379470-08b800bebc67?auto=format&fit=crop&w=800&q=80"
-                    alt="Jogo de terror"
-                >
+                    <h3>💥 Gosta de ação?</h3>
 
-                <div class="game-info">
+                    <p>
+                        Experimente jogos com combate intenso,
+                        desafios e muita adrenalina.
+                    </p>
 
-                    <h3>Dark House</h3>
+                    <br>
 
-                    <div class="genre">
-                        Terror • Suspense
-                    </div>
+                    <h3>👻 Gosta de terror?</h3>
 
-                    <div class="rating">
-                        ★★★★☆
-                    </div>
+                    <p>
+                        Jogos de terror são perfeitos para quem
+                        gosta de suspense e mistério.
+                    </p>
 
-                    <a href="#" class="game-button">
-                        Ver jogo
-                    </a>
+                    <br>
+
+                    <h3>🌎 Gosta de mundo aberto?</h3>
+
+                    <p>
+                        Explore mapas enormes, descubra lugares
+                        secretos e faça suas próprias escolhas.
+                    </p>
 
                 </div>
 
-            </article>
+            </section>
 
         </div>
-
-
-        <!-- RECOMENDAÇÃO -->
-
-        <section class="recommendation" id="recomendacao">
-
-            <h2>🎯 Não sabe o que jogar?</h2>
-
-            <p>
-                Responda algumas perguntas e descubra jogos que combinam
-                com seu estilo de jogador.
-            </p>
-
-            <a href="#" class="button">
-                Encontrar meu jogo
-            </a>
-
-        </section>
 
     </main>
 
 
-    <!-- FOOTER -->
-
     <footer>
 
-        <p>
-            © 2026 GameFinder — Seu próximo jogo está aqui.
-        </p>
+        <p>© 2026 GameZone</p>
+
+        <p>Site criado com HTML e CSS</p>
 
     </footer>
 
-
-    <!-- JAVASCRIPT -->
-
-    <script>
-
-        // Sistema de favoritos
-
-        const favorites =
-            document.querySelectorAll(".favorite");
-
-        favorites.forEach(button => {
-
-            button.addEventListener("click", () => {
-
-                if (button.innerHTML === "♡") {
-                    button.innerHTML = "♥";
-                    button.style.color = "#ff4f81";
-                } else {
-                    button.innerHTML = "♡";
-                    button.style.color = "white";
-                }
-
-            });
-
-        });
-
-
-        // Filtros
-
-        const filters =
-            document.querySelectorAll(".filter");
-
-        filters.forEach(filter => {
-
-            filter.addEventListener("click", () => {
-
-                filters.forEach(f =>
-                    f.classList.remove("active")
-                );
-
-                filter.classList.add("active");
-
-            });
-
-        });
-
-
-        // Pesquisa
-
-        function searchGame() {
-
-            const search =
-                document.getElementById("search").value;
-
-            if (search.trim() === "") {
-
-                alert("Digite o nome de um jogo.");
-
-            } else {
-
-                alert(
-                    "Pesquisando por: " + search
-                );
-
-            }
-
-        }
-
-    </script>
-
 </body>
+
 </html>
