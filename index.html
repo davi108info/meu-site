@@ -1,249 +1,314 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlayStation Games</title>
 
-    <meta charset="UTF-8">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-    <title>GameZone</title>
+    body {
+      background: #080b14;
+      color: white;
+    }
 
-    <style>
+    header {
+      background: #111629;
+      padding: 20px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #252b43;
+    }
 
-        body {
-            background-color: #101010;
-            color: white;
-            font-family: Arial;
-            margin: 0;
-        }
+    .logo {
+      color: #4da3ff;
+      font-size: 28px;
+      font-weight: bold;
+    }
 
-        header {
-            background-color: #252525;
-            text-align: center;
-            padding: 25px;
-        }
+    nav a {
+      color: #ddd;
+      text-decoration: none;
+      margin-left: 25px;
+      transition: 0.3s;
+    }
 
-        h1 {
-            color: #8a5cff;
-        }
+    nav a:hover {
+      color: #4da3ff;
+    }
 
-        nav {
-            background-color: #151515;
-            text-align: center;
-            padding: 15px;
-        }
+    .hero {
+      min-height: 500px;
+      padding: 100px 8%;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, #080b14 15%, rgba(8,11,20,.75), rgba(8,11,20,.2)),
+        url("https://images.unsplash.com/photo-1605901309584-818e25960a8f?auto=format&fit=crop&w=1600&q=80")
+        center/cover;
+    }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 15px;
-        }
+    .hero-content {
+      max-width: 600px;
+    }
 
-        nav a:hover {
-            color: #8a5cff;
-        }
+    .hero h1 {
+      font-size: 55px;
+      margin-bottom: 20px;
+    }
 
-        .conteudo {
-            width: 90%;
-            margin: auto;
-        }
+    .hero h1 span {
+      color: #4da3ff;
+    }
 
-        .inicio {
-            text-align: center;
-            padding: 40px;
-        }
+    .hero p {
+      color: #ccc;
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
 
-        .inicio h2 {
-            color: #9c7aff;
-        }
+    .button {
+      display: inline-block;
+      background: #287bea;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: .3s;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+    .button:hover {
+      background: #55a5ff;
+      transform: translateY(-2px);
+    }
 
-        th {
-            background-color: #6b3bc7;
-            padding: 12px;
-        }
+    section {
+      padding: 70px 8%;
+    }
 
-        td {
-            background-color: #202020;
-            padding: 12px;
-            text-align: center;
-            border: 1px solid #444;
-        }
+    .section-title {
+      font-size: 32px;
+      margin-bottom: 35px;
+    }
 
-        .nota {
-            color: yellow;
-        }
+    .section-title span {
+      color: #4da3ff;
+    }
 
-        .caixa {
-            background-color: #202020;
-            padding: 20px;
-            margin-top: 20px;
-            border: 1px solid #444;
-        }
+    .games {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
 
-        footer {
-            background-color: #151515;
-            text-align: center;
-            padding: 25px;
-            margin-top: 40px;
-            color: #999;
-        }
+    .card {
+      background: #111629;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #252b43;
+      transition: .3s;
+    }
 
-    </style>
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: #4da3ff;
+      box-shadow: 0 10px 30px rgba(0, 120, 255, .15);
+    }
 
+    .card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card h3 {
+      font-size: 21px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #aaa;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .tag {
+      display: inline-block;
+      color: #4da3ff;
+      background: #172744;
+      padding: 5px 9px;
+      border-radius: 5px;
+      font-size: 12px;
+    }
+
+    .about {
+      background: #0d1120;
+      text-align: center;
+    }
+
+    .about p {
+      max-width: 800px;
+      margin: auto;
+      color: #bbb;
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    footer {
+      background: #05070d;
+      padding: 30px;
+      text-align: center;
+      color: #777;
+    }
+
+    footer strong {
+      color: #4da3ff;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav a {
+        margin: 0 8px;
+        font-size: 14px;
+      }
+
+      .hero {
+        min-height: 450px;
+        padding: 70px 8%;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
+  <header>
+    <div class="logo">PLAYSTATION</div>
 
-<header>
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#jogos">Jogos</a>
+      <a href="#sobre">Sobre</a>
+    </nav>
+  </header>
 
-    <h1>🎮 GameZone</h1>
+  <main>
 
-    <p>Site de recomendação de jogos</p>
-
-</header>
-
-
-<nav>
-
-    <a href="#inicio">Início</a>
-
-    <a href="#jogos">Jogos</a>
-
-    <a href="#categorias">Categorias</a>
-
-</nav>
-
-
-<div class="conteudo">
-
-
-    <div class="inicio" id="inicio">
-
-        <h2>Bem-vindo ao GameZone!</h2>
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <h1>O mundo dos <span>games</span></h1>
 
         <p>
-            Aqui você pode conhecer alguns jogos
-            e escolher qual jogar.
+          Descubra grandes aventuras, personagens inesquecíveis
+          e alguns dos melhores jogos disponíveis no universo PlayStation.
         </p>
 
-    </div>
+        <a href="#jogos" class="button">Explorar jogos</a>
+      </div>
+    </section>
 
+    <section id="jogos">
+      <h2 class="section-title">Jogos em <span>destaque</span></h2>
 
-    <h2 id="jogos">🎮 Jogos recomendados</h2>
+      <div class="games">
 
+        <article class="card">
+          <img
+            src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80"
+            alt="Controle de videogame">
+          <div class="card-content">
+            <h3>God of War</h3>
+            <p>
+              Uma aventura épica de Kratos e Atreus através
+              da mitologia nórdica.
+            </p>
+            <span class="tag">Ação / Aventura</span>
+          </div>
+        </article>
 
-    <table>
+        <article class="card">
+          <img
+            src="https://images.unsplash.com/photo-1605899435973-ca2d1a8861cf?auto=format&fit=crop&w=600&q=80"
+            alt="Pessoa jogando videogame">
+          <div class="card-content">
+            <h3>Spider-Man</h3>
+            <p>
+              Balance pelos arranha-céus de Nova York
+              em uma aventura cheia de ação.
+            </p>
+            <span class="tag">Ação</span>
+          </div>
+        </article>
 
-        <tr>
+        <article class="card">
+          <img
+            src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=600&q=80"
+            alt="Setup gamer">
+          <div class="card-content">
+            <h3>The Last of Us</h3>
+            <p>
+              Uma emocionante jornada de sobrevivência
+              em um mundo pós-apocalíptico.
+            </p>
+            <span class="tag">Aventura</span>
+          </div>
+        </article>
 
-            <th>Jogo</th>
-            <th>Gênero</th>
-            <th>Plataforma</th>
-            <th>Nota</th>
+        <article class="card">
+          <img
+            src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80"
+            alt="Videogame">
+          <div class="card-content">
+            <h3>Gran Turismo</h3>
+            <p>
+              Experimente corridas intensas com carros
+              e pistas impressionantes.
+            </p>
+            <span class="tag">Corrida</span>
+          </div>
+        </article>
 
-        </tr>
+      </div>
+    </section>
 
+    <section class="about" id="sobre">
+      <h2 class="section-title">Sobre o <span>site</span></h2>
 
-        <tr>
+      <p>
+        Este é um projeto criado em HTML e CSS para apresentar
+        alguns jogos famosos associados ao universo PlayStation.
+        O site possui layout responsivo e pode ser personalizado
+        com novos jogos, imagens, trailers, avaliações e muito mais.
+      </p>
+    </section>
 
-            <td>Minecraft</td>
-            <td>Aventura</td>
-            <td>PC / Celular</td>
-            <td class="nota">9,5</td>
+  </main>
 
-        </tr>
-
-
-        <tr>
-
-            <td>Free Fire</td>
-            <td>Battle Royale</td>
-            <td>Celular</td>
-            <td class="nota">8,8</td>
-
-        </tr>
-
-
-        <tr>
-
-            <td>Fortnite</td>
-            <td>Battle Royale</td>
-            <td>PC / Console</td>
-            <td class="nota">9,0</td>
-
-        </tr>
-
-
-        <tr>
-
-            <td>Resident Evil 4</td>
-            <td>Terror / Ação</td>
-            <td>PC / Console</td>
-            <td class="nota">9,6</td>
-
-        </tr>
-
-    </table>
-
-
-    <h2 id="categorias">🎯 Categorias</h2>
-
-
-    <div class="caixa">
-
-        <h3>🔥 Ação</h3>
-
-        <p>
-            Jogos para quem gosta de lutas,
-            desafios e aventura.
-        </p>
-
-    </div>
-
-
-    <div class="caixa">
-
-        <h3>👻 Terror</h3>
-
-        <p>
-            Jogos com suspense, mistério
-            e momentos assustadores.
-        </p>
-
-    </div>
-
-
-    <div class="caixa">
-
-        <h3>🏆 Competitivo</h3>
-
-        <p>
-            Jogos para quem gosta de competir
-            e jogar contra outras pessoas.
-        </p>
-
-    </div>
-
-
-</div>
-
-
-<footer>
-
-    <p>GameZone - 2026</p>
-
-    <p>Projeto de HTML e CSS</p>
-
-</footer>
-
+  <footer>
+    <p>© 2026 <strong>PlayStation Games</strong> — Projeto demonstrativo.</p>
+  </footer>
 
 </body>
-
 </html>
